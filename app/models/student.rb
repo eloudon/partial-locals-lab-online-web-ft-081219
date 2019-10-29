@@ -15,10 +15,10 @@ class Student < ActiveRecord::Base
   has_many :classrooms, through: :classroom_students
 
   def self.search(name)
-    if name.present?
-      where('NAME like ?', "%#{name}")
+    if name == ''
+      self.all
     else
-      Student.all
+      self.all.select {|student| student.name.downcase.include?(name.downcase)}
     end
   end
 end
