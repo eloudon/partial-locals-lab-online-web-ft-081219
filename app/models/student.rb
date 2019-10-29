@@ -22,11 +22,3 @@ class Student < ActiveRecord::Base
     end
   end
 end
-  def self.search(name)
-  if name.present?
-    where('NAME like ?', "%#{name}%")
-  else
-    Student.all
-  end
-end
-end
